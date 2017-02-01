@@ -16,9 +16,9 @@ public class MotorManager {
 	public static final double Y_SPEED_CORRECTION = 1.0;
 	public static final double Z_SPEED_CORRECTION = 1.0;
 
-	public static final double X_ROTATION_TO_MILLIMETER = 1.0;
-	public static final double Y_ROTATION_TO_MILLIMETER = 1.0;
-	public static final double Z_ROTATION_TO_MILLIMETER = 1.0;
+	public static final double X_MILLIMETER_TO_ROTATION = 86.74;
+	public static final double Y_MILLIMETER_TO_ROTATION = 145.94;
+	public static final double Z_MILLIMETER_TO_ROTATION = 1.0;
 
 	private MotorController xController;
 	private MotorController yController;
@@ -55,17 +55,7 @@ public class MotorManager {
 	 * @param shape
 	 */
 	public void print(PrintShape shape) {
-		print(shape, new Point(0, 0));
-	}
-
-	/**
-	 * @param shape
-	 *            The shape to print
-	 * @param start
-	 *            The initial point to start the printing
-	 */
-	public void print(PrintShape shape, Point start) {
-
+		// TODO
 	}
 
 }
