@@ -12,6 +12,7 @@ import lejos.util.Delay;
 public class MotorController {
 	private RemoteMotor motor;
 	private TouchSensor sensor;
+	private double millimeterToRotation;
 
 	/**
 	 * Generates a MotorController, which controls one motor and its sensor
@@ -20,14 +21,17 @@ public class MotorController {
 	 *            The motor to control
 	 * @param port
 	 *            The port of the TouchSensor
+	 * @param invertDirection Whether the movments of this motor should run to the inverted direction
+	 * @param millimeterToRotation Correction value for converting millimeter input to degree output
 	 */
-	public MotorController(RemoteMotor motor, SensorPort port) {
+	public MotorController(RemoteMotor motor, SensorPort port, boolean invertDirection, double millimeterToRotation) {
 		this.motor = motor;
 		this.sensor = new TouchSensor(port);
+		this.millimeterToRotation = millimeterToRotation * (invertDirection? -1 : 1);
 	}
 
 	/**
-	 * Rotates the Motor to its startpoint
+	 * Moves the Motor to its startpoint
 	 */
 	public void calibrate() {
 		motor.forward();
@@ -38,25 +42,25 @@ public class MotorController {
 	}
 
 	/**
-	 * Rotates the controlled motor for angle degrees. Calling Instance DOES
-	 * wait until rotation is complete!
+	 * Moves the controlled axis for length millimeters. Calling Instance DOES
+	 * wait until movement is complete!
 	 *
-	 * @param angle
-	 *            The angle to rotate in degrees.
+	 * @param length
+	 *            The length in millimeter to move in degrees.
 	 */
-	public void driveAlone(int angle) {
-		motor.rotate(angle);
+	public void driveAlone(int length) {
+		motor.rotate((int)(length * millimeterToRotation));
 	}
 
 	/**
-	 * Rotates the controlled motor for angle degrees. Calling Instance does NOT
-	 * wait until rotation is complete!
+	 * Moves the controlled axis for length millimeters. Calling Instance does NOT
+	 * wait until movement is complete!
 	 *
-	 * @param angle
-	 *            The angle to rotate in degrees.
+	 * @param length
+	 *            The length in millimeter to move in degrees.
 	 */
-	public void drive(int angle) {
-		motor.rotate(angle, true);
+	public void drive(int length) {
+		motor.rotate((int)(length * millimeterToRotation), true);
 	}
 
 }

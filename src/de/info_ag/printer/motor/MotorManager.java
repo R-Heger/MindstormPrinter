@@ -29,9 +29,9 @@ public class MotorManager {
 	 * touch sensor
 	 */
 	public MotorManager() {
-		xController = new MotorController(Motor.A, SensorPort.S2);
-		yController = new MotorController(Motor.B, SensorPort.S4);
-		zController = new MotorController(Motor.C, SensorPort.S1);
+		xController = new MotorController(Motor.A, SensorPort.S2, false, X_MILLIMETER_TO_ROTATION);
+		yController = new MotorController(Motor.B, SensorPort.S4, false, Y_MILLIMETER_TO_ROTATION);
+		zController = new MotorController(Motor.C, SensorPort.S1, false, Z_MILLIMETER_TO_ROTATION);
 	}
 
 	/**
@@ -41,11 +41,12 @@ public class MotorManager {
 		zController.driveAlone(2 * 360);
 		xController.calibrate();
 		yController.calibrate();
+		zController.calibrate();
 	}
 
 	/**
 	 * @param controller
-	 *            The Controller to aclibrate
+	 *            The Controller to calibrate
 	 */
 	public void calibrate(MotorController controller) {
 		controller.calibrate();
