@@ -9,9 +9,14 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-		Button.waitForAnyPress();
-		
 		motorManager = new MotorManager();
+		
+		Button.waitForAnyPress();
+		motorManager.calibrate();
+//		motorManager.border();		
+		motorManager.move();
+		Button.waitForAnyPress();
+		motorManager.lift();
 		
 	}
 

@@ -10,9 +10,12 @@ import lejos.util.Delay;
  *
  */
 public class MotorController {
+	public static int BASE_SPEED = 500;
+	
 	private RemoteMotor motor;
 	private TouchSensor sensor;
-	private double millimeterToRotation;
+	private double degreePerMillimeter;
+	private double speedCorrection;
 
 	/**
 	 * Generates a MotorController, which controls one motor and its sensor
@@ -24,17 +27,25 @@ public class MotorController {
 	 * @param invertDirection Whether the movments of this motor should run to the inverted direction
 	 * @param millimeterToRotation Correction value for converting millimeter input to degree output
 	 */
-	public MotorController(RemoteMotor motor, SensorPort port, boolean invertDirection, double millimeterToRotation) {
+	public MotorController(RemoteMotor motor, SensorPort port, boolean invertDirection, double degreePerMillimeter,
+				double speedCorrection) {
 		this.motor = motor;
 		this.sensor = new TouchSensor(port);
-		this.millimeterToRotation = millimeterToRotation * (invertDirection? -1 : 1);
+		this.degreePerMillimeter = degreePerMillimeter * (invertDirection? -1 : 1);
+		this.speedCorrection = speedCorrection;
+		this.motor.setAcceleration(2000);
+		this.motor.setSpeed((int) (speedCorrection * BASE_SPEED));
 	}
 
 	/**
 	 * Moves the Motor to its startpoint
 	 */
 	public void calibrate() {
-		motor.forward();
+		if(degreePerMillimeter < 0){
+			motor.forward();
+		} else {
+			motor.backward();
+		}
 		while (!sensor.isPressed()) {
 			Delay.msDelay(50);
 		}
@@ -48,8 +59,8 @@ public class MotorController {
 	 * @param length
 	 *            The length in millimeter to move in degrees.
 	 */
-	public void driveAlone(int length) {
-		motor.rotate((int)(length * millimeterToRotation));
+	public void driveAlone(double length) {
+		motor.rotate((int)(length * degreePerMillimeter));
 	}
 
 	/**
@@ -59,8 +70,9 @@ public class MotorController {
 	 * @param length
 	 *            The length in millimeter to move in degrees.
 	 */
-	public void drive(int length) {
-		motor.rotate((int)(length * millimeterToRotation), true);
+	public void drive(double length, double speed) {
+		motor.setSpeed((int)(speed * speedCorrection * BASE_SPEED));
+		motor.rotate((int)(length * degreePerMillimeter), true);
 	}
 
 }

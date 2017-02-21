@@ -1,6 +1,5 @@
 package de.info_ag.printer.motor;
 
-import de.info_ag.printer.shape.Point;
 import de.info_ag.printer.shape.PrintShape;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
@@ -16,9 +15,9 @@ public class MotorManager {
 	public static final double Y_SPEED_CORRECTION = 1.0;
 	public static final double Z_SPEED_CORRECTION = 1.0;
 
-	public static final double X_MILLIMETER_TO_ROTATION = 86.74;
-	public static final double Y_MILLIMETER_TO_ROTATION = 145.94;
-	public static final double Z_MILLIMETER_TO_ROTATION = 1.0;
+	public static final double X_DEGREE_PER_MILLIMETER = 87.8;
+	public static final double Y_DEGREE_PER_MILLIMETER = 152.1; //145.94;
+	public static final double Z_DEGREE_PER_MILLIMETER = 576.0;
 
 	private MotorController xController;
 	private MotorController yController;
@@ -29,16 +28,16 @@ public class MotorManager {
 	 * touch sensor
 	 */
 	public MotorManager() {
-		xController = new MotorController(Motor.A, SensorPort.S2, false, X_MILLIMETER_TO_ROTATION);
-		yController = new MotorController(Motor.B, SensorPort.S4, false, Y_MILLIMETER_TO_ROTATION);
-		zController = new MotorController(Motor.C, SensorPort.S1, false, Z_MILLIMETER_TO_ROTATION);
+		xController = new MotorController(Motor.A, SensorPort.S2, false, X_DEGREE_PER_MILLIMETER, X_SPEED_CORRECTION);
+		yController = new MotorController(Motor.B, SensorPort.S4, false, Y_DEGREE_PER_MILLIMETER, Y_SPEED_CORRECTION);
+		zController = new MotorController(Motor.C, SensorPort.S1, false, Z_DEGREE_PER_MILLIMETER, Z_SPEED_CORRECTION);
 	}
 
 	/**
 	 * Calibrates the axes to their Origin
 	 */
 	public void calibrate() {
-		zController.driveAlone(2 * 360);
+		zController.driveAlone(2);
 		xController.calibrate();
 		yController.calibrate();
 		zController.calibrate();
@@ -57,6 +56,23 @@ public class MotorManager {
 	 */
 	public void print(PrintShape shape) {
 		// TODO
+	}
+	
+	public void lift(){
+		zController.driveAlone(2);
+	}
+	
+	public void border(){
+		xController.driveAlone(85);
+		yController.driveAlone(85);
+		xController.driveAlone(-85);
+		yController.driveAlone(-85);
+	}
+	
+	public void move(){
+//		zController.calibrate();
+		yController.drive(85,500);
+		xController.drive(85,500);
 	}
 
 }
