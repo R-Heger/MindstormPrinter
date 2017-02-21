@@ -11,7 +11,7 @@ import lejos.nxt.SensorPort;
  */
 public class MotorManager {
 
-	public static final double X_SPEED_CORRECTION = 1.0;
+	public static final double X_SPEED_CORRECTION = 0.58;
 	public static final double Y_SPEED_CORRECTION = 1.0;
 	public static final double Z_SPEED_CORRECTION = 1.0;
 
@@ -59,7 +59,7 @@ public class MotorManager {
 	}
 	
 	public void lift(){
-		zController.driveAlone(2);
+		zController.driveAlone(30);
 	}
 	
 	public void border(){
@@ -71,8 +71,17 @@ public class MotorManager {
 	
 	public void move(){
 //		zController.calibrate();
-		yController.drive(85,500);
-		xController.drive(85,500);
+		
+//		xController.drive(40,1.0);
+//		yController.driveAlone(40);
+//		xController.drive(-40,1.0);
+//		yController.driveAlone(40);
+//		calibrate();
+//		xController.drive(20,0.5);
+//		yController.driveAlone(40);
+//		xController.drive(-20,0.5);
+//		yController.driveAlone(40);
+//		zController.driveAlone(2);
 	}
 
 }

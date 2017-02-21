@@ -10,7 +10,7 @@ import lejos.util.Delay;
  *
  */
 public class MotorController {
-	public static int BASE_SPEED = 500;
+	public static int BASE_SPEED = 800;
 	
 	private RemoteMotor motor;
 	private TouchSensor sensor;
@@ -33,7 +33,7 @@ public class MotorController {
 		this.sensor = new TouchSensor(port);
 		this.degreePerMillimeter = degreePerMillimeter * (invertDirection? -1 : 1);
 		this.speedCorrection = speedCorrection;
-		this.motor.setAcceleration(2000);
+		this.motor.setAcceleration(1000);
 		this.motor.setSpeed((int) (speedCorrection * BASE_SPEED));
 	}
 

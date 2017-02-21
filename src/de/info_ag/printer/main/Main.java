@@ -15,8 +15,8 @@ public class Main {
 		motorManager.calibrate();
 //		motorManager.border();		
 		motorManager.move();
-		Button.waitForAnyPress();
-		motorManager.lift();
+//		Button.waitForAnyPress();
+//		motorManager.lift();
 		
 	}
 
