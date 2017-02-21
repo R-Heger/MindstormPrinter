@@ -33,7 +33,7 @@ public class MotorController {
 		this.sensor = new TouchSensor(port);
 		this.degreePerMillimeter = degreePerMillimeter * (invertDirection? -1 : 1);
 		this.speedCorrection = speedCorrection;
-		this.motor.setAcceleration(1000);
+		this.motor.setAcceleration(50);
 		this.motor.setSpeed((int) (speedCorrection * BASE_SPEED));
 	}
 

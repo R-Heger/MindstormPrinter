@@ -1,8 +1,10 @@
 package de.info_ag.printer.motor;
 
 import de.info_ag.printer.shape.PrintShape;
+import lejos.nxt.Button;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
+import lejos.util.Delay;
 
 /**
  * The class manages the motor movements and interaction of the 3 axes for
@@ -40,6 +42,7 @@ public class MotorManager {
 		zController.driveAlone(2);
 		xController.calibrate();
 		yController.calibrate();
+		yController.driveAlone(5);
 		zController.calibrate();
 	}
 
@@ -63,25 +66,141 @@ public class MotorManager {
 	}
 	
 	public void border(){
-		xController.driveAlone(85);
-		yController.driveAlone(85);
-		xController.driveAlone(-85);
-		yController.driveAlone(-85);
+		calibrate();
+		
+		xController.driveAlone(80);
+		yController.driveAlone(80);
+		xController.driveAlone(-80);
+		yController.driveAlone(-80);
 	}
 	
-	public void move(){
-//		zController.calibrate();
+	public void testDiagonals(){
+		calibrate();
 		
-//		xController.drive(40,1.0);
-//		yController.driveAlone(40);
-//		xController.drive(-40,1.0);
-//		yController.driveAlone(40);
-//		calibrate();
-//		xController.drive(20,0.5);
-//		yController.driveAlone(40);
-//		xController.drive(-20,0.5);
-//		yController.driveAlone(40);
-//		zController.driveAlone(2);
+		xController.drive(80,1);
+		yController.driveAlone(80);
+		
+		calibrate();
+		
+		zController.driveAlone(2);
+		yController.driveAlone(80);
+		zController.calibrate();
+		
+		xController.drive(80,1);
+		yController.driveAlone(-80);				
 	}
-
+	
+	public void testArcs(){
+		calibrate();
+		
+		zController.driveAlone(2);
+		xController.driveAlone(10);
+		zController.calibrate();
+		
+		xController.drive(30,1.0);
+		yController.driveAlone(30);
+		xController.drive(30,1.0);
+		yController.driveAlone(-30);		
+				
+		yController.drive(15,0.5);
+		xController.driveAlone(-30);
+		yController.drive(-15,0.5);
+		xController.driveAlone(-30);
+		
+		
+		calibrate();
+		
+		zController.driveAlone(2);
+		xController.driveAlone(80);
+		yController.driveAlone(10);
+		zController.calibrate();
+		
+		xController.drive(-30,1.0);
+		yController.driveAlone(30);
+		xController.drive(30,1.0);
+		yController.driveAlone(30);		
+				
+		xController.drive(-15,0.5);
+		yController.driveAlone(-30);
+		xController.drive(15,0.5);
+		yController.driveAlone(-30);
+		
+		calibrate();
+		
+		zController.driveAlone(2);
+		xController.driveAlone(70);
+		yController.driveAlone(80);
+		zController.calibrate();
+		
+		xController.drive(-30,1.0);
+		yController.driveAlone(-30);
+		xController.drive(-30,1.0);
+		yController.driveAlone(30);		
+				
+		yController.drive(-15,0.5);
+		xController.driveAlone(30);
+		yController.drive(15,0.5);
+		xController.driveAlone(30);
+		
+		calibrate();
+		
+		zController.driveAlone(2);
+		yController.driveAlone(70);
+		zController.calibrate();
+		
+		xController.drive(30,1.0);
+		yController.driveAlone(-30);
+		xController.drive(-30,1.0);
+		yController.driveAlone(-30);		
+				
+		xController.drive(15,0.5);
+		yController.driveAlone(30);
+		xController.drive(-15,0.5);
+		yController.driveAlone(30);
+		
+		zController.driveAlone(2);
+	}
+	
+	public void testAxes(){
+		calibrate();
+		// Test X
+		zController.driveAlone(2);
+		yController.driveAlone(37.5);
+		xController.driveAlone(10);
+		zController.calibrate();
+		
+		xController.driveAlone(50);
+		
+		zController.driveAlone(2);
+		yController.driveAlone(5);
+		zController.calibrate();
+		
+		xController.driveAlone(-50);
+		
+		calibrate();
+		
+		// Test Y
+		zController.driveAlone(2);
+		xController.driveAlone(37.5);
+		yController.driveAlone(10);
+		zController.calibrate();
+		
+		yController.driveAlone(50);
+		
+		zController.driveAlone(2);
+		xController.driveAlone(5);
+		zController.calibrate();
+		
+		yController.driveAlone(-50);
+		
+		zController.driveAlone(2);
+	}
+	
+	public void testPicture(){
+		border();
+		testAxes();
+		testDiagonals();
+		testArcs();
+	
+	}
 }

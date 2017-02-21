@@ -12,9 +12,10 @@ public class Main {
 		motorManager = new MotorManager();
 		
 		Button.waitForAnyPress();
-		motorManager.calibrate();
-//		motorManager.border();		
-		motorManager.move();
+//		motorManager.calibrate();
+		
+		
+//		motorManager.testPicture();
 //		Button.waitForAnyPress();
 //		motorManager.lift();
 		
