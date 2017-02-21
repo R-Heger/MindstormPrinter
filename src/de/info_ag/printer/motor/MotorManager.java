@@ -58,12 +58,22 @@ public class MotorManager {
 	 * @param shape
 	 */
 	public void print(PrintShape shape) {
-		// TODO
+		if(checkShape(shape)){
+			// TODO print the shape
+		} else {
+			//TODO errorhandling
+		}
 	}
 	
 	public void lift(){
 		zController.driveAlone(30);
 	}
+	
+	private boolean checkShape(PrintShape printShape){
+		//TODO
+		return false;		
+	}
+	
 	
 	public void border(){
 		calibrate();
