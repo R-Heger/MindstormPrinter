@@ -176,7 +176,7 @@ public class MotorManager {
 		// Test X
 		zController.driveAlone(2);
 		yController.driveAlone(37.5);
-		xController.driveAlone(10);
+		xController.driveAlone(15);
 		zController.calibrate();
 		
 		xController.driveAlone(50);
@@ -192,7 +192,7 @@ public class MotorManager {
 		// Test Y
 		zController.driveAlone(2);
 		xController.driveAlone(37.5);
-		yController.driveAlone(10);
+		yController.driveAlone(15);
 		zController.calibrate();
 		
 		yController.driveAlone(50);

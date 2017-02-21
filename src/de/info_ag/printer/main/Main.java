@@ -17,10 +17,12 @@ public class Main {
 		
 		Button.waitForAnyPress();
 //		motorManager.calibrate();
-		motorManager.print(shapeBuilder.createSquareShape(4, new Point(2,2)));
+//		Button.waitForAnyPress();
+
+//		motorManager.print(shapeBuilder.createSquareShape(4, new Point(2,2)));
 		
-		
-//		motorManager.testPicture();
+//		motorManager.testArcs();
+		motorManager.testPicture();
 //		Button.waitForAnyPress();
 //		motorManager.lift();
 		

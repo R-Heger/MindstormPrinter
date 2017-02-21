@@ -73,6 +73,7 @@ public class MotorController {
 	public void drive(double length, double speed) {
 		motor.setSpeed((int)(speed * speedCorrection * BASE_SPEED));
 		motor.rotate((int)(length * degreePerMillimeter), true);
+		motor.setSpeed((int)(speedCorrection * BASE_SPEED));
 	}
 
 }
