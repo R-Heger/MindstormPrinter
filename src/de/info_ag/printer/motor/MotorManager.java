@@ -1,10 +1,8 @@
 package de.info_ag.printer.motor;
 
 import de.info_ag.printer.shape.PrintShape;
-import lejos.nxt.Button;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
-import lejos.util.Delay;
 
 /**
  * The class manages the motor movements and interaction of the 3 axes for
@@ -18,7 +16,7 @@ public class MotorManager {
 	public static final double Z_SPEED_CORRECTION = 1.0;
 
 	public static final double X_DEGREE_PER_MILLIMETER = 87.8;
-	public static final double Y_DEGREE_PER_MILLIMETER = 152.1; //145.94;
+	public static final double Y_DEGREE_PER_MILLIMETER = 152.1;
 	public static final double Z_DEGREE_PER_MILLIMETER = 576.0;
 
 	private MotorController xController;
