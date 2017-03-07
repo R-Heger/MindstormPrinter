@@ -12,5 +12,23 @@ public class PrintShapeBuilder {
 		
 		return square;
 	}
+	
+	
+//TODO	
+public PrintShape createPolygonShape (int sideCount, int sideLength, Point start){
+		
+		if(sideCount < 3){
+			System.out.println("The least possible amount of sides is 3");	
+			return null;
+		}
+		
+		PrintShape polygon = new PrintShape(start);
+		
+		double angle = 180 - ((sideCount-2)*180)/sideCount;
+		
+		
+		
+		return polygon;
+	}
 
 }
