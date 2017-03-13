@@ -19,6 +19,7 @@ public class PrintShape {
 	public PrintShape(Point startPoint) {
 		parts = new LinkedList<ShapePart>();
 		this.startPoint = startPoint;
+		this.end = new Point(0,0);
 	}
 	
 	public void attachShapePart(int xParameter, int yParameter, boolean isPrinted) {
@@ -32,9 +33,12 @@ public class PrintShape {
 	public void attachPrintShape(PrintShape newShape){
 		int newX = newShape.getStartPoint().getXCoordinate() - end.getXCoordinate();
 		int newY = newShape.getStartPoint().getYCoordinate() - end.getYCoordinate();
+		if(!(newX == 0 && newY == 0)){
+			attachShapePart(newX, newY, false);
+		}
 		end.setXCoordinate(newShape.getStartPoint().getXCoordinate() + newShape.getEnd().getXCoordinate());
-		end.setYCoordinate(newShape.getStartPoint().getYCoordinate() + newShape.getEnd().getXCoordinate());
-		attachShapePart(newX, newY, false);
+		end.setYCoordinate(newShape.getStartPoint().getYCoordinate() + newShape.getEnd().getYCoordinate());
+		
 		parts.addAll(newShape.getParts());
 		
 	}

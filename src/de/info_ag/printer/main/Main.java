@@ -16,16 +16,11 @@ public class Main {
 		shapeBuilder = new PrintShapeBuilder();
 		
 		Button.waitForAnyPress();
-//		motorManager.calibrate();
-//		Button.waitForAnyPress();
-
-//		motorManager.print(shapeBuilder.createSquareShape(4, new Point(2,2)));
+//		motorManager.calibratePen();
 		
-//		motorManager.testArcs();
-		motorManager.testPicture();
-//		Button.waitForAnyPress();
-//		motorManager.lift();
-		
+//		motorManager.print(shapeBuilder.createSquareShape(40, new Point(20,20)));
+		motorManager.print(shapeBuilder.createSquareShape(80, new Point(0,0)));
+//		motorManager.print(shapeBuilder.createTestPicture());
 	}
 
 }
