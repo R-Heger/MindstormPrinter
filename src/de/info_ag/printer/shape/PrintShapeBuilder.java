@@ -120,7 +120,7 @@ public class PrintShapeBuilder {
 			peak.attachShapePart(width / 2, hight, true);
 			break;
 		default:
-			System.out.println("Incorrect orientation!");
+			System.err.println("Incorrect orientation!");
 		}
 
 		return peak;
