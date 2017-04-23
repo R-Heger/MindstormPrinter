@@ -13,11 +13,11 @@ import lejos.nxt.SensorPort;
  */
 public class MotorManager {
 
-	public static final double X_SPEED_CORRECTION = 0.58;
+	public static final double X_SPEED_CORRECTION = 1.0;
 	public static final double Y_SPEED_CORRECTION = 1.0;
 	public static final double Z_SPEED_CORRECTION = 1.0;
 
-	public static final double X_DEGREE_PER_MILLIMETER = 87.8;
+	public static final double X_DEGREE_PER_MILLIMETER = 152.1;
 	public static final double Y_DEGREE_PER_MILLIMETER = 152.1;
 	public static final double Z_DEGREE_PER_MILLIMETER = 576.0;
 
@@ -42,7 +42,7 @@ public class MotorManager {
 		zController.driveAlone(2);
 		xController.calibrate();
 		yController.calibrate();
-		yController.driveAlone(5);
+		yController.driveAlone(8);
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class MotorManager {
 			}
 			lift();
 		} else {
-			System.err.println("The PrintShape don't matches the bounding box!");
+			System.err.println("The PrintShape does not matche the bounding box!");
 		}
 	}
 	
