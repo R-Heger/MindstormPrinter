@@ -30,9 +30,9 @@ public class MotorManager {
 	 * touch sensor
 	 */
 	public MotorManager() {
-		xController = new MotorController(Motor.A, SensorPort.S2, false, X_DEGREE_PER_MILLIMETER, X_SPEED_CORRECTION);
-		yController = new MotorController(Motor.B, SensorPort.S4, false, Y_DEGREE_PER_MILLIMETER, Y_SPEED_CORRECTION);
-		zController = new MotorController(Motor.C, SensorPort.S1, false, Z_DEGREE_PER_MILLIMETER, Z_SPEED_CORRECTION);
+		xController = new MotorController(Motor.C, SensorPort.S4, false, X_DEGREE_PER_MILLIMETER, X_SPEED_CORRECTION);
+		yController = new MotorController(Motor.B, SensorPort.S2, true, Y_DEGREE_PER_MILLIMETER, Y_SPEED_CORRECTION);
+		zController = new MotorController(Motor.A, SensorPort.S3, true, Z_DEGREE_PER_MILLIMETER, Z_SPEED_CORRECTION);
 	}
 
 	/**
