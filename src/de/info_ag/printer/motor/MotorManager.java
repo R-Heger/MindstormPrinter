@@ -1,10 +1,15 @@
 package de.info_ag.printer.motor;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 import de.info_ag.printer.shape.PrintShape;
 import de.info_ag.printer.shape.ShapePart;
 import lejos.nxt.Button;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
+import lejos.pc.comm.NXTCommFactory;
+import lejos.pc.comm.NXTConnector;
 
 /**
  * The class manages the motor movements and interaction of the 3 axes for
@@ -23,7 +28,10 @@ public class MotorManager {
 
 	private MotorController xController;
 	private MotorController yController;
-	private MotorController zController;
+	private MotorController zController;	
+
+	private static NXTConnector con;
+	private static DataOutputStream out;
 
 	/**
 	 * Inits the 3 MotorController for the 3 axes. Maps each axis a motor and a
@@ -33,6 +41,16 @@ public class MotorManager {
 		xController = new MotorController(Motor.C, SensorPort.S4, false, X_DEGREE_PER_MILLIMETER, X_SPEED_CORRECTION);
 		yController = new MotorController(Motor.B, SensorPort.S2, true, Y_DEGREE_PER_MILLIMETER, Y_SPEED_CORRECTION);
 		zController = new MotorController(Motor.A, SensorPort.S3, true, Z_DEGREE_PER_MILLIMETER, Z_SPEED_CORRECTION);
+		initDataConnection();
+	}
+	
+	private void initDataConnection(){
+		con  = new NXTConnector();
+		System.out.println("connecting to second NXT...");
+		if (con.connectTo("Torwart", "0016530C9390", NXTCommFactory.USB)) {
+			System.out.println("connected");
+		}
+		out = new DataOutputStream(con.getOutputStream());
 	}
 
 	/**
@@ -114,5 +132,14 @@ public class MotorManager {
 		zController.calibrate();
 		Button.waitForAnyPress();
 		lift();
+	}
+	
+	private void sendCommand(int command){		
+		try {
+			out.writeInt(command);
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 }

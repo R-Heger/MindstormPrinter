@@ -1,5 +1,7 @@
 package de.info_ag.printer.main;
 
+import java.io.DataOutputStream;
+
 import de.info_ag.printer.motor.MotorManager;
 import de.info_ag.printer.shape.Point;
 import de.info_ag.printer.shape.PrintShape;
@@ -8,16 +10,16 @@ import de.info_ag.printer.ui.gui.Menu;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import lejos.nxt.Button;
+import lejos.pc.comm.NXTCommFactory;
+import lejos.pc.comm.NXTConnector;
 
 public class Main  extends Application {
 	
 	private static MotorManager motorManager;
-	private static PrintShapeBuilder shapeBuilder;
-	
+	private static PrintShapeBuilder shapeBuilder;	
 	
 	public static void main(String[] args) {
-		motorManager = new MotorManager();
-		shapeBuilder = new PrintShapeBuilder();
+//		initialisation();
 		
 //		Button.waitForAnyPress();
 		
@@ -29,14 +31,17 @@ public class Main  extends Application {
 	}
 	
 	public void start(Stage arg0) throws Exception {
-
-		motorManager = new MotorManager();
-		shapeBuilder = new PrintShapeBuilder();
+		initialisation();
 		
 		Menu menu = new Menu(arg0, motorManager, shapeBuilder);
 		
 		menu.show();
 		
+	}
+	
+	private static void initialisation(){
+		motorManager = new MotorManager();
+		shapeBuilder = new PrintShapeBuilder();	
 	}
 
 }
