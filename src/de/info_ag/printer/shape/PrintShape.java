@@ -125,6 +125,14 @@ public class PrintShape {
 		return startPoint;
 	}
 
+/*
+ * to correct...	
+ */
+//	public void setStartPoint(Point startingPoint){
+//		parts.add(new ShapePart(startingPoint.getXCoordinate(), startingPoint.getYCoordinate()));
+//		startPoint = startingPoint;
+//	}
+
 	public Point getEnd() {
 		return end;
 	}

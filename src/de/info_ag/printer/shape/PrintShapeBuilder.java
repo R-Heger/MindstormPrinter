@@ -46,7 +46,34 @@ public class PrintShapeBuilder {
 		}
 		
 		return polygon;
-}
+	}
+
+/*
+ * to test...
+ */
+//	public PrintShape createPolygonShape (int sideCount, int sideLength, Point start){
+//		int smallestX = 0;
+//		if(sideCount < 3){
+//			System.out.println("The least possible amount of sides is 3");	
+//			return null;
+//		}
+//		
+//		PrintShape polygon = new PrintShape(start);
+//		
+//		double angle = 180 - ((sideCount-2)*180)/sideCount;
+//		
+//		for(int i=1; i<=sideCount; ++i){
+//			int newX = (int) (sideLength*Math.cos(angle*i/180*Math.PI));
+//			polygon.attachShapePart(newX, (int) (sideLength*Math.sin(angle*i/180*Math.PI)), true);
+//			if(newX+smallestX<smallestX){
+//				smallestX+=newX;
+//			}
+//		}
+//		
+//		polygon.setStartingPoint(new Point(smallestX, 0));
+//		
+//		return polygon;
+//   }
 
 	/*
 	 * von Tobias
