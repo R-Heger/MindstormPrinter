@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 public class Menu {
 	private MotorManager manager;
-	@SuppressWarnings("unused")
 	private PrintShapeBuilder builder;
 	
 	private GridPane root;
@@ -35,6 +34,8 @@ public class Menu {
 	}
 	
 	private void init(){
+		primaryStage.setTitle("MindstormPrinter");
+		
 		root.setPadding(new Insets(64));
 		root.setHgap(32);
 		root.setVgap(32);
@@ -44,7 +45,7 @@ public class Menu {
 		});
 		
 		print.setOnAction(e->{
-			manager.print(builder.createTestPicture());
+			new PrintMenu(manager, builder).show();
 		});
 		
 		quit.setOnAction(e->{
