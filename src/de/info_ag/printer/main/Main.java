@@ -6,6 +6,7 @@ import de.info_ag.printer.motor.MotorManager;
 import de.info_ag.printer.shape.Point;
 import de.info_ag.printer.shape.PrintShape;
 import de.info_ag.printer.shape.shapeBuilders.PrintShapeBuilder;
+import de.info_ag.printer.shape.shapeBuilders.TestShapeBuilder;
 import de.info_ag.printer.ui.gui.Menu;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -27,7 +28,7 @@ public class Main  extends Application {
 		
 //		motorManager.calibratePen();
 		
-//		motorManager.print(shapeBuilder.createTestPicture());		
+//		motorManager.print(TestShapeBuilder.createTestPicture1());		
 	}
 	
 	public void start(Stage arg0) throws Exception {
@@ -41,7 +42,6 @@ public class Main  extends Application {
 	
 	private static void initialisation(){
 		motorManager = new MotorManager();
-		shapeBuilder = new PrintShapeBuilder();	
 	}
 
 }
