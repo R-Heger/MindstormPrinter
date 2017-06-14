@@ -1,4 +1,7 @@
-package de.info_ag.printer.shape;
+package de.info_ag.printer.shape.shapeBuilders;
+
+import de.info_ag.printer.shape.Point;
+import de.info_ag.printer.shape.PrintShape;
 
 public class PrintShapeBuilder {
 

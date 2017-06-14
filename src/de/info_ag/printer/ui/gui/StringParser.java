@@ -2,7 +2,7 @@ package de.info_ag.printer.ui.gui;
 
 import de.info_ag.printer.shape.Point;
 import de.info_ag.printer.shape.PrintShape;
-import de.info_ag.printer.shape.PrintShapeBuilder;
+import de.info_ag.printer.shape.shapeBuilders.PrintShapeBuilder;
 
 public class StringParser {
 	private PrintShapeBuilder builder;

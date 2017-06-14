@@ -1,7 +1,7 @@
 package de.info_ag.printer.ui.gui;
 
 import de.info_ag.printer.motor.MotorManager;
-import de.info_ag.printer.shape.PrintShapeBuilder;
+import de.info_ag.printer.shape.shapeBuilders.PrintShapeBuilder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;

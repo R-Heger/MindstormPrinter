@@ -21,7 +21,11 @@ public class PrintShape {
 		this.startPoint = startPoint;
 		this.end = new Point(0, 0);
 	}
-
+	
+	public void attachShapePart(double xParameter, double yParameter, boolean isPrinted) {
+		attachShapePart((int) xParameter, (int) yParameter, isPrinted);
+	}
+	
 	public void attachShapePart(int xParameter, int yParameter, boolean isPrinted) {
 		parts.add(new ShapePart(xParameter, yParameter, isPrinted));
 		end.setXCoordinate(end.getXCoordinate() + xParameter);
@@ -125,13 +129,9 @@ public class PrintShape {
 		return startPoint;
 	}
 
-/*
- * to correct...	
- */
-//	public void setStartPoint(Point startingPoint){
-//		parts.add(new ShapePart(startingPoint.getXCoordinate(), startingPoint.getYCoordinate()));
-//		startPoint = startingPoint;
-//	}
+	public void setStartPoint(Point startingPoint){
+		startPoint = startingPoint;
+	}
 
 	public Point getEnd() {
 		return end;
