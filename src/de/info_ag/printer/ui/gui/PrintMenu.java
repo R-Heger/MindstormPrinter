@@ -26,7 +26,7 @@ public class PrintMenu {
 	public PrintMenu(MotorManager manager, PrintShapeBuilder builder){
 		this.manager = manager;
 		
-		parser = new StringParser(builder);
+		parser = new StringParser();
 		
 		printStage = new Stage();
 		
