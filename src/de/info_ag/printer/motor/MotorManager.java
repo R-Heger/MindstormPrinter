@@ -3,7 +3,7 @@ package de.info_ag.printer.motor;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import de.info_ag.printer.shape.PrintShape;
+import de.info_ag.printer.shape.PrintShape2D;
 import de.info_ag.printer.shape.ShapePart;
 import lejos.nxt.Button;
 import lejos.nxt.Motor;
@@ -74,7 +74,7 @@ public class MotorManager {
 	/**
 	 * @param shape
 	 */
-	public void print(PrintShape shape) {
+	public void print(PrintShape2D shape) {
 		if (shapeIsValid(shape)) {
 			boolean printing = true;
 			calibrate();
@@ -98,7 +98,7 @@ public class MotorManager {
 		}
 	}
 	
-	private boolean shapeIsValid(PrintShape printShape) {
+	private boolean shapeIsValid(PrintShape2D printShape) {
 		int x = printShape.getStartPoint().getXCoordinate();
 		int y = printShape.getStartPoint().getYCoordinate();
 		for (ShapePart shapePart : printShape.getParts()) {

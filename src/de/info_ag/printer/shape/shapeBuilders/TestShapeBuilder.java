@@ -1,12 +1,12 @@
 package de.info_ag.printer.shape.shapeBuilders;
 
 import de.info_ag.printer.shape.Point;
-import de.info_ag.printer.shape.PrintShape;
+import de.info_ag.printer.shape.PrintShape2D;
 
 public class TestShapeBuilder extends PrintShapeBuilder {
 	
-	public static PrintShape createTestPicture1() {
-		PrintShape test = new PrintShape();
+	public static PrintShape2D createTestPicture1() {
+		PrintShape2D test = new PrintShape2D();
 		test.attachPrintShape(GeometryShapeBuilder.createSquareShape(80, new Point(0, 0)));
 		test.attachPrintShape(createDiagonals());
 
@@ -24,16 +24,16 @@ public class TestShapeBuilder extends PrintShapeBuilder {
 		return test;
 	}
 	
-	private static PrintShape createDiagonals() {
-		PrintShape diags = new PrintShape();
+	private static PrintShape2D createDiagonals() {
+		PrintShape2D diags = new PrintShape2D();
 		diags.attachShapePart(80, 80, true);
 		diags.attachShapePart(0, -80, false);
 		diags.attachShapePart(-80, 80, true);
 		return diags;
 	}
 	
-	public static PrintShape createTestPicture2() {
-		PrintShape test = new PrintShape(new Point(0, 0));
+	public static PrintShape2D createTestPicture2() {
+		PrintShape2D test = new PrintShape2D(new Point(0, 0));
 		for (int i = 0; i < 16; i++) {
 			switch (i % 4) {
 			case 0:

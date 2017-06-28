@@ -1,12 +1,12 @@
 package de.info_ag.printer.shape.shapeBuilders;
 
 import de.info_ag.printer.shape.Point;
-import de.info_ag.printer.shape.PrintShape;
+import de.info_ag.printer.shape.PrintShape2D;
 
 public class GeometryShapeBuilder extends PrintShapeBuilder {
 
-	public static PrintShape createSquareShape(int height, Point start) {
-		PrintShape square = new PrintShape(start);
+	public static PrintShape2D createSquareShape(int height, Point start) {
+		PrintShape2D square = new PrintShape2D(start);
 
 		for (int i = 0; i < 4; ++i) {
 			square.attachShapePart(height * ((i + 1) % 2) * (i < 2 ? 1 : -1), height * (i % 2) * (i < 2 ? 1 : -1),
@@ -16,14 +16,14 @@ public class GeometryShapeBuilder extends PrintShapeBuilder {
 		return square;
 	}
 
-	public static PrintShape createPolygonShape(int sideCount, int sideLength, Point start) {
+	public static PrintShape2D createPolygonShape(int sideCount, int sideLength, Point start) {
 
 		if (sideCount < 3) {
 			System.out.println("The least possible amount of sides is 3");
 			return null;
 		}
 
-		PrintShape polygon = new PrintShape(start);
+		PrintShape2D polygon = new PrintShape2D(start);
 
 		double angle = 180 - ((sideCount - 2) * 180) / sideCount;
 
@@ -62,8 +62,8 @@ public class GeometryShapeBuilder extends PrintShapeBuilder {
 //			return polygon;
 	//   }
 	
-	public static PrintShape createPeak(int hight, int width, int orientation, Point start) {
-		PrintShape peak = new PrintShape(start);
+	public static PrintShape2D createPeak(int hight, int width, int orientation, Point start) {
+		PrintShape2D peak = new PrintShape2D(start);
 
 		switch (orientation) {
 		case 1:

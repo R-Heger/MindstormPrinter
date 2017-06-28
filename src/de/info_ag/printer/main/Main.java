@@ -4,7 +4,7 @@ import java.io.DataOutputStream;
 
 import de.info_ag.printer.motor.MotorManager;
 import de.info_ag.printer.shape.Point;
-import de.info_ag.printer.shape.PrintShape;
+import de.info_ag.printer.shape.PrintShape2D;
 import de.info_ag.printer.shape.shapeBuilders.PrintShapeBuilder;
 import de.info_ag.printer.shape.shapeBuilders.TestShapeBuilder;
 import de.info_ag.printer.ui.gui.Menu;

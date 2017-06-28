@@ -1,24 +1,24 @@
 package de.info_ag.printer.shape.shapeBuilders;
 
 import de.info_ag.printer.shape.Point;
-import de.info_ag.printer.shape.PrintShape;
+import de.info_ag.printer.shape.PrintShape2D;
 
 public class CharShapeBuilder extends PrintShapeBuilder {
 
 	private static final int CHAR_SEPERATION = 2;
 
-	public static PrintShape createStringShape(String string, int fontSize) {
-		PrintShape stringShape = parseStringToShape(string);
+	public static PrintShape2D createStringShape(String string, int fontSize) {
+		PrintShape2D stringShape = parseStringToShape(string);
 		stringShape.scale(fontSize / 10);
 		return stringShape;
 	}
 
-	private static PrintShape parseStringToShape(String toParse) {
-		PrintShape parsed = new PrintShape();
+	private static PrintShape2D parseStringToShape(String toParse) {
+		PrintShape2D parsed = new PrintShape2D();
 		char[] charsToParse = toParse.toCharArray();
 
 		for (char c : charsToParse) {
-			PrintShape charShape = getCharShape(c);
+			PrintShape2D charShape = getCharShape(c);
 			charShape.setStartPoint(new Point(parsed.getEnd().getXCoordinate(), 0));
 			parsed.attachPrintShape(charShape);
 			parsed.attachShapePart(CHAR_SEPERATION, 0, false);
@@ -27,8 +27,8 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return parsed;
 	}
 
-	private static PrintShape getCharShape(char c) {
-		PrintShape charShape;
+	private static PrintShape2D getCharShape(char c) {
+		PrintShape2D charShape;
 
 		switch (c) {
 		case 'A':
@@ -140,7 +140,7 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 			break;
 
 		default:
-			charShape = new PrintShape();
+			charShape = new PrintShape2D();
 			System.err.println("Unknown char!");
 			break;
 		}
@@ -148,8 +148,8 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return charShape;
 	}
 
-	private static PrintShape A(int height) {
-		PrintShape a = new PrintShape();
+	private static PrintShape2D A(int height) {
+		PrintShape2D a = new PrintShape2D();
 		a.attachShapePart(height, height * 0.3, true);
 		a.attachShapePart(-height, height * 0.3, true);
 		a.attachShapePart(height / 2, -height * 0.15, false);
@@ -161,8 +161,8 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 
 	}
 
-	private static PrintShape B(int height) {
-		PrintShape b = new PrintShape();
+	private static PrintShape2D B(int height) {
+		PrintShape2D b = new PrintShape2D();
 		b.attachShapePart(0, height, true);
 		b.attachShapePart(0.6 * height, -0.25 * height, true);
 		b.attachShapePart(-0.6 * height, -0.25 * height, true);
@@ -172,15 +172,15 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return b;
 	}
 
-	public static PrintShape C(int height) {
-		PrintShape c = new PrintShape();
+	public static PrintShape2D C(int height) {
+		PrintShape2D c = new PrintShape2D();
 		c.attachShapePart(0, height * 0.6, false);
 
 		return c;
 	}
 
-	private static PrintShape D(int height) {
-		PrintShape d = new PrintShape();
+	private static PrintShape2D D(int height) {
+		PrintShape2D d = new PrintShape2D();
 		d.attachShapePart(0, height, true);
 		d.attachShapePart(0.6 * height, -0.33 * height, true);
 		d.attachShapePart(0, -0.34 * height, true);
@@ -189,8 +189,8 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return d;
 	}
 
-	private static PrintShape E(int height) {
-		PrintShape e = new PrintShape();
+	private static PrintShape2D E(int height) {
+		PrintShape2D e = new PrintShape2D();
 		e.attachShapePart(0, height, true);
 		e.attachShapePart(0.6 * height, 0, true);
 		e.attachShapePart(-0.6 * height, 0, false);
@@ -199,8 +199,8 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return e;
 	}
 
-	public static PrintShape F(int height) {
-		PrintShape f = new PrintShape();
+	public static PrintShape2D F(int height) {
+		PrintShape2D f = new PrintShape2D();
 		f.attachShapePart(0, height, true);
 		f.attachShapePart(0.6 * height, 0, true);
 		f.attachShapePart(-0.6 * height, 0, false);
@@ -210,14 +210,14 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return f;
 	}
 
-	public static PrintShape G(int height) {
-		PrintShape g = new PrintShape();
+	public static PrintShape2D G(int height) {
+		PrintShape2D g = new PrintShape2D();
 
 		return g;
 	}
 
-	public static PrintShape H(int height) {
-		PrintShape h = new PrintShape();
+	public static PrintShape2D H(int height) {
+		PrintShape2D h = new PrintShape2D();
 		h.attachShapePart(0, height, true);
 		h.attachShapePart(0, -0.5 * height, false);
 		h.attachShapePart(0.6 * height, 0, true);
@@ -227,41 +227,41 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return h;
 	}
 
-	private static PrintShape I(int height) {
-		PrintShape i = new PrintShape();
+	private static PrintShape2D I(int height) {
+		PrintShape2D i = new PrintShape2D();
 		i.attachShapePart(0, height, true);
 		i.attachShapePart(0.6 * height, height, true);
 		return i;
 	}
 
-	private static PrintShape J(int height) {
-		PrintShape j = new PrintShape();
+	private static PrintShape2D J(int height) {
+		PrintShape2D j = new PrintShape2D();
 
 		return j;
 	}
 
-	private static PrintShape K(int height) {
-		PrintShape k = new PrintShape();
+	private static PrintShape2D K(int height) {
+		PrintShape2D k = new PrintShape2D();
 
 		return k;
 	}
 
-	private static PrintShape L(int height) {
-		PrintShape l = new PrintShape();
+	private static PrintShape2D L(int height) {
+		PrintShape2D l = new PrintShape2D();
 		l.attachShapePart(0, height, false);
 		l.attachShapePart(0, -height, true);
 		l.attachShapePart(0.6 * height, 0, true);
 		return l;
 	}
 
-	private static PrintShape M(int height) {
-		PrintShape m = new PrintShape();
+	private static PrintShape2D M(int height) {
+		PrintShape2D m = new PrintShape2D();
 
 		return m;
 	}
 
-	private static PrintShape N(int height) {
-		PrintShape n = new PrintShape();
+	private static PrintShape2D N(int height) {
+		PrintShape2D n = new PrintShape2D();
 		n.attachShapePart(0, height, true);
 		n.attachShapePart(0.6 * height, -height, true);
 		n.attachShapePart(0, height, true);
@@ -269,14 +269,14 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return n;
 	}
 
-	private static PrintShape O(int height) {
-		PrintShape o = new PrintShape();
+	private static PrintShape2D O(int height) {
+		PrintShape2D o = new PrintShape2D();
 
 		return o;
 	}
 
-	private static PrintShape P(int height) {
-		PrintShape p = new PrintShape();
+	private static PrintShape2D P(int height) {
+		PrintShape2D p = new PrintShape2D();
 		p.attachShapePart(0, height, true);
 		p.attachShapePart(0.4 * height, 0, true);
 		p.attachShapePart(0.2 * height, -0.2 * height, true);
@@ -287,14 +287,14 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return p;
 	}
 
-	private static PrintShape Q(int height) {
-		PrintShape q = new PrintShape();
+	private static PrintShape2D Q(int height) {
+		PrintShape2D q = new PrintShape2D();
 
 		return q;
 	}
 
-	private static PrintShape R(int height) {
-		PrintShape r = new PrintShape();
+	private static PrintShape2D R(int height) {
+		PrintShape2D r = new PrintShape2D();
 		r.attachShapePart(0, height, true);
 		r.attachShapePart(0.4 * height, 0, true);
 		r.attachShapePart(0.2 * height, -0.2 * height, true);
@@ -306,14 +306,14 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return r;
 	}
 
-	private static PrintShape S(int height) {
-		PrintShape s = new PrintShape();
+	private static PrintShape2D S(int height) {
+		PrintShape2D s = new PrintShape2D();
 
 		return s;
 	}
 
-	private static PrintShape T(int height) {
-		PrintShape t = new PrintShape();
+	private static PrintShape2D T(int height) {
+		PrintShape2D t = new PrintShape2D();
 		t.attachShapePart(0, height, false);
 		t.attachShapePart(0.6 * height, 0, true);
 		t.attachShapePart(-0.3 * height, 0, false);
@@ -322,42 +322,42 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return t;
 	}
 
-	private static PrintShape U(int height) {
-		PrintShape u = new PrintShape();
+	private static PrintShape2D U(int height) {
+		PrintShape2D u = new PrintShape2D();
 
 		return u;
 	}
 
-	private static PrintShape V(int height) {
-		PrintShape v = new PrintShape();
+	private static PrintShape2D V(int height) {
+		PrintShape2D v = new PrintShape2D();
 		v.attachShapePart(0, height, false);
 		v.attachShapePart(0.3 * height, -height, true);
 		v.attachShapePart(0.3 * height, height, true);
 		return v;
 	}
 
-	private static PrintShape W(int height) {
-		PrintShape w = new PrintShape();
+	private static PrintShape2D W(int height) {
+		PrintShape2D w = new PrintShape2D();
 
 		return w;
 	}
 
-	private static PrintShape X(int height) {
-		PrintShape x = new PrintShape();
+	private static PrintShape2D X(int height) {
+		PrintShape2D x = new PrintShape2D();
 		x.attachShapePart(0.6 * height, height, true);
 		x.attachShapePart(-0.6 * height, 0, false);
 		x.attachShapePart(0.6 * height, -height, true);
 		return x;
 	}
 
-	private static PrintShape Y(int height) {
-		PrintShape y = new PrintShape();
+	private static PrintShape2D Y(int height) {
+		PrintShape2D y = new PrintShape2D();
 
 		return y;
 	}
 
-	private static PrintShape Z(int height) {
-		PrintShape z = new PrintShape();
+	private static PrintShape2D Z(int height) {
+		PrintShape2D z = new PrintShape2D();
 		z.attachShapePart(0, height, false);
 		z.attachShapePart(0.6 * height, 0, true);
 		z.attachShapePart(-0.6 * height, -height, true);
@@ -365,8 +365,8 @@ public class CharShapeBuilder extends PrintShapeBuilder {
 		return z;
 	}
 
-	private static PrintShape space(int height) {
-		PrintShape space = new PrintShape();
+	private static PrintShape2D space(int height) {
+		PrintShape2D space = new PrintShape2D();
 		space.attachShapePart(0.5 * height, 0, false);
 		return space;
 

@@ -2,21 +2,21 @@ package de.info_ag.printer.shape;
 
 import java.util.LinkedList;
 
-public class PrintShape {
+public class PrintShape2D {
 	private LinkedList<ShapePart> parts;
 
 	private Point startPoint;
 	private Point end;
 
-	public PrintShape() {
+	public PrintShape2D() {
 		this(0, 0);
 	}
 
-	public PrintShape(int startX, int startY) {
+	public PrintShape2D(int startX, int startY) {
 		this(new Point(startX, startY));
 	}
 
-	public PrintShape(Point startPoint) {
+	public PrintShape2D(Point startPoint) {
 		parts = new LinkedList<ShapePart>();
 		this.startPoint = startPoint;
 		this.end = new Point(0, 0);
@@ -32,7 +32,7 @@ public class PrintShape {
 		end.setYCoordinate(end.getYCoordinate() + yParameter);
 	}
 
-	public void attachPrintShape(PrintShape newShape) {
+	public void attachPrintShape(PrintShape2D newShape) {
 		int newX = newShape.getStartPoint().getXCoordinate() - end.getXCoordinate();
 		int newY = newShape.getStartPoint().getYCoordinate() - end.getYCoordinate();
 		if (!(newX == 0 && newY == 0)) {
