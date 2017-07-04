@@ -21,11 +21,11 @@ public class PrintShape2D {
 		this.startPoint = startPoint;
 		this.end = new Point(0, 0);
 	}
-	
+
 	public void attachShapePart(double xParameter, double yParameter, boolean isPrinted) {
 		attachShapePart((int) xParameter, (int) yParameter, isPrinted);
 	}
-	
+
 	public void attachShapePart(int xParameter, int yParameter, boolean isPrinted) {
 		parts.add(new ShapePart(xParameter, yParameter, isPrinted));
 		end.setXCoordinate(end.getXCoordinate() + xParameter);
@@ -55,31 +55,26 @@ public class PrintShape2D {
 
 	}
 
-/** Will nicht so ganz...
-	private int getAngle(int x, int y){
-        if(x==0 && y>0){
-        	return 90;
-        }
-        else if(x==0 && y<0){
-        	return 270;
-        }
-        else if(x>0 && y>0){
-        	return (int) (Math.atan(Math.abs(y)/Math.abs(x)));
-        }
-        else if(x>0 && y<0){
-        	return (int)(360-Math.atan(Math.abs(y)/Math.abs(x)));
-        }
-        else if (x<0 && y>0){
-        	return (int) (180-Math.atan(Math.abs(y)/Math.abs(x)));
-        }
-        else if (x<0 && y<0){
-        	return (int) (180+Math.atan(Math.abs(y)/Math.abs(x)));
-        }
-        else{
-        	return 0;
-        }
+	private double getAngle(int x, int y) {
+		if (x == 0 && y > 0) {
+			return Math.PI / 2;
+		} else if (x == 0 && y < 0) {
+			return Math.PI / 2 * 3;
+		} else if (x < 0 && y == 0) {
+			return Math.PI;
+		} else if (x > 0 && y > 0) {
+			return (Math.atan(Math.abs(y) / Math.abs(x)));
+		} else if (x > 0 && y < 0) {
+			return (2 * Math.PI - Math.atan(Math.abs(y) / Math.abs(x)));
+		} else if (x < 0 && y > 0) {
+			return (Math.PI - Math.atan(Math.abs(y) / Math.abs(x)));
+		} else if (x < 0 && y < 0) {
+			return (Math.PI + Math.atan(Math.abs(y) / Math.abs(x)));
+		} else {
+			return 0;
+		}
 
-}
+	}
 
 	private Point getMid() {
 		int x = 0;
@@ -89,47 +84,46 @@ public class PrintShape2D {
 		for (ShapePart part : this.getParts()) {
 			aktX += part.getXParameter();
 			aktY += part.getYParameter();
-			if (aktX > x){
+			if (aktX > x) {
 				x = aktX;
-			}				
-			if (aktY > y){
+			}
+			if (aktY > y) {
 				y = aktY;
 			}
 		}
 
-		return new Point((int) aktX / 2, (int) aktY / 2);
+		return new Point((int) x / 2, (int) y / 2);
 	}
 
-	public PrintShape rotate(int angle) {
+	public PrintShape rotate(double angle) {
+		angle = angle * Math.PI / 180;
 		double l = 0;
-		int a = 0;
-		
+		double a = 0;
+
 		PrintShape rotated = new PrintShape();
-		
+
 		for (ShapePart part : this.getParts()) {
-			l = Math.sqrt(part.getXParameter() ^ 2 + part.getYParameter() ^ 2);
+			l = Math.sqrt(Math.pow(part.getXParameter(), 2) + Math.pow(part.getYParameter(), 2));
 			a = getAngle(part.getXParameter(), part.getYParameter());
 			rotated.attachShapePart((int) (Math.cos(angle + a) * l), (int) (Math.sin(angle + a) * l), part.isPrinted());
 		}
 
 		Point mid = this.getMid();
-		l = Math.sqrt(mid.getXCoordinate() ^ 2 + mid.getYCoordinate() ^ 2);
+		l = Math.sqrt(Math.pow(mid.getXCoordinate(), 2) + Math.pow(mid.getYCoordinate(), 2));
 		a = getAngle(mid.getXCoordinate(), mid.getYCoordinate());
 		rotated.startPoint.setXCoordinate(
-				this.startPoint.getXCoordinate() - (((int) (Math.cos(angle + a) * l) - mid.getXCoordinate())));
+				this.startPoint.getXCoordinate() + (((int) ((-1) * (Math.cos(angle + a) * l) + mid.getXCoordinate()))));
 		rotated.startPoint.setYCoordinate(
-				this.startPoint.getYCoordinate() - (((int) (Math.cos(angle + a) * l) - mid.getYCoordinate())));
-		
+				this.startPoint.getYCoordinate() - (((int) ((-1) * (Math.cos(angle + a) * l) + mid.getYCoordinate()))));
+
 		return rotated;
 	}
-*/
-
 
 	public Point getStartPoint() {
 		return startPoint;
 	}
 
-	public void setStartPoint(Point startingPoint){
+	public void setStartPoint(Point startingPoint) {
 		startPoint = startingPoint;
 	}
 
