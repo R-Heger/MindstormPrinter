@@ -95,12 +95,12 @@ public class PrintShape2D {
 		return new Point((int) x / 2, (int) y / 2);
 	}
 
-	public PrintShape rotate(double angle) {
+	public PrintShape2D rotate(double angle) {
 		angle = angle * Math.PI / 180;
 		double l = 0;
 		double a = 0;
 
-		PrintShape rotated = new PrintShape();
+		PrintShape2D rotated = new PrintShape2D();
 
 		for (ShapePart part : this.getParts()) {
 			l = Math.sqrt(Math.pow(part.getXParameter(), 2) + Math.pow(part.getYParameter(), 2));
